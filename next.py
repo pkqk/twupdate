@@ -1,8 +1,11 @@
 import os
 
 def state():
-    with open('state') as f:
-        return f.read()
+    try:
+      with open('state') as f:
+          return f.read()
+    except IOError:
+      return images()[0]
 
 def images():
     return os.listdir('images')
